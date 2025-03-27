@@ -15,11 +15,20 @@ func (f optionFunc) apply(o *options) error {
 }
 
 func newOptions(opts ...Option) (*options, error) {
-	o := &options{}
+	o := &options{
+		name: "Tapd MCP Server",
+	}
 	for _, opt := range opts {
 		if err := opt.apply(o); err != nil {
 			return nil, err
 		}
 	}
 	return o, nil
+}
+
+func WithName(name string) Option {
+	return optionFunc(func(o *options) error {
+		o.name = name
+		return nil
+	})
 }
