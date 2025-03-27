@@ -13,7 +13,16 @@ func init() {
 }
 
 func main() {
-	client, err := tapd.NewClient("username", "password")
+	var (
+		username = os.Getenv("TAPD_USERNAME")
+		password = os.Getenv("TAPD_PASSWORD")
+	)
+
+	if username == "" || password == "" {
+		log.Fatal("missing TAPD_USERNAME or TAPD_PASSWORD")
+	}
+
+	client, err := tapd.NewClient(username, password)
 	if err != nil {
 		log.Fatal(err)
 	}
