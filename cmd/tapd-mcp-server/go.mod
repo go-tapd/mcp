@@ -5,7 +5,7 @@ go 1.23
 replace github.com/go-tapd/mcp => ../../
 
 require (
-	github.com/go-tapd/mcp v0.0.0-00010101000000-000000000000
+	github.com/go-tapd/mcp cdd81d84028e
 	github.com/go-tapd/tapd v0.10.0
 )
 
