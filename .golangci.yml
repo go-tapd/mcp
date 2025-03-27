@@ -1,0 +1,40 @@
+version: "2"
+
+linters:
+  default: none
+
+  enable:
+    - bodyclose
+    - dogsled
+    - durationcheck
+    - errcheck
+    - copyloopvar
+    - govet
+    - goconst
+    - mnd
+    - gocyclo
+    - ineffassign
+    - prealloc
+    - revive
+    - staticcheck
+    - unused
+    - whitespace
+    - wastedassign
+    - unconvert
+    - misspell
+  settings:
+    revive:
+      rules:
+        - name: package-comments
+          disabled: true
+
+formatters:
+  enable:
+    - gofmt
+    - gofumpt
+    - goimports
+  settings:
+    gofmt:
+      rewrite-rules:
+        - pattern: 'interface{}'
+          replacement: 'any'
