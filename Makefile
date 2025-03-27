@@ -1,3 +1,8 @@
+ALL_PROJECT_DIRS := $(shell find ./cmd -maxdepth 1 -mindepth 1 -type d | sort | uniq) # find all project directories
+
+GO = go
+BIN_DIR = $(CURDIR)/bin
+
 .PHONY: init
 init:
 	go install mvdan.cc/gofumpt@latest
@@ -36,3 +41,11 @@ nilaway-install:
 nilaway:
 	nilaway ./...
 	@echo "✅ Nilaway completed"
+
+.PHONY: build
+build: $(ALL_PROJECT_DIRS:%=build/%)
+build/%: DIR=$*
+build/%:
+	@echo 'building $(DIR)' \
+		&& cd $(DIR) \
+		&& $(GO) build -o $(BIN_DIR) ./...
