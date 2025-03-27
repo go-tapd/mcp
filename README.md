@@ -2,15 +2,17 @@
 
 ## 📥 Usage
 
-### Use StdIO
+### Use STDIO Server
 
-Install the package
+**Install the package**
 
 ```bash
 go install github.com/go-tapd/mcp/cmd/tapd-mcp-server@latest
 ```
 
-Configure the MCP server
+**Configure the MCP server**
+
+Below is a configuration example based on Cline, with different configurations for various MCP Clients.
 
 ```json
 {
@@ -28,13 +30,13 @@ Configure the MCP server
 
 ### Use SSE Server
 
-Install the package
+**Install the package**
 
 ```bash
 go get github.com/go-tapd/mcp
 ```
 
-Create a server
+**Create a server**
 
 ```go
 package main
