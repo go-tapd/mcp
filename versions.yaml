@@ -6,8 +6,6 @@ module-sets:
 
       # Cmd
       - github.com/go-tapd/mcp/cmd/tapd-mcp-server
-
-      # Example
 excluded-modules:
   - github.com/go-tapd/mcp/examples/sse
   - github.com/go-tapd/mcp/tools
