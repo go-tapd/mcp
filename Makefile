@@ -1,7 +1,8 @@
 
 TOOLS_MOD_DIR := ./tools
+ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-ALL_GO_MOD_DIRS := $(shell find . -type f -name 'go.mod' -exec dirname {} \; | sort)
+ALL_GO_MOD_DIRS := $(shell find . -type f -name 'main.go' -exec dirname {} \; | sort)
 ROOT_GO_MOD_DIRS := $(filter-out $(TOOLS_MOD_DIR), $(ALL_GO_MOD_DIRS))
 ALL_COVERAGE_MOD_DIRS := $(shell find . -type f -name 'go.mod' -exec dirname {} \; | grep -E -v '^./example|^$(TOOLS_MOD_DIR)' | sort)
 
@@ -44,7 +45,7 @@ build/%: DIR=$*
 build/%:
 	@echo "$(GO) build $(DIR)/..." \
 		&& cd $(DIR) \
-		&& $(GO) build ./...
+		&& $(GO) build -o $(ROOT_DIR)/bin/ ./...
 
 # Tests
 
