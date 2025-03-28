@@ -1,0 +1,11 @@
+module-sets:
+  stable:
+    version: v0.0.1
+    modules:
+      - github.com/go-tapd/mcp
+
+      # Cmd
+      - github.com/go-tapd/mcp/cmd/tapd-mcp-server
+excluded-modules:
+  - github.com/go-tapd/mcp/examples/sse
+  - github.com/go-tapd/mcp/tools
