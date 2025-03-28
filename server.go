@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-tapd/mcp/internal/tools"
 	"github.com/go-tapd/mcp/internal/tools/greetings"
+	"github.com/go-tapd/mcp/internal/tools/user/roles"
 	"github.com/go-tapd/tapd"
 	"github.com/mark3labs/mcp-go/server"
 )
@@ -35,7 +36,8 @@ func NewServer(client *tapd.Client, opts ...Option) (*Server, error) {
 
 func (s *Server) registerTools() {
 	tools.RegisterTools(s.mcpServer,
-		&greetings.Tool{},
+		greetings.NewTool(),
+		roles.NewTool(s.tapdClient),
 	)
 }
 
