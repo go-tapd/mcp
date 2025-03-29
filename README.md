@@ -75,6 +75,12 @@ Visit http://localhost:8080/sse to get the SSE stream.
 
 ## 📦 Features
 
+### 需求
+
+- [x] [返回符合查询条件的所有需求模板](https://open.tapd.cn/document/api-doc/API%E6%96%87%E6%A1%A3/api_reference/story/get_story_template_list.html)
+
+### 用户
+
 - [x] [获取项目角色ID对照关系](https://open.tapd.cn/document/api-doc/API%E6%96%87%E6%A1%A3/api_reference/user/get_roles.html)
 
 ## 📄 License
