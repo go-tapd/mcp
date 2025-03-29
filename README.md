@@ -21,7 +21,8 @@ Below is a configuration example based on Cline, with different configurations f
       "command": "{path}/tapd-mcp-server",
       "env": {
         "TAPD_USERNAME": "<YOUR_USERNAME>",
-        "TAPD_PASSWORD": "<YOUR_PASSWORD>"
+        "TAPD_PASSWORD": "<YOUR_PASSWORD>",
+        "TAPD_WORKSPACE_ID": "<YOUR_WORKSPACE_ID>"
       }
     }
   }
@@ -55,7 +56,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	srv, err := mcp.NewServer(client)
+	workspaceID := 123456 // replace with your workspace ID
+
+	srv, err := mcp.NewServer(workspaceID, client)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,25 +1,33 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/go-tapd/mcp"
 	"github.com/go-tapd/tapd"
 )
 
 func init() {
-	requiredEnvs("TAPD_USERNAME", "TAPD_PASSWORD")
+	requiredEnvs("TAPD_USERNAME", "TAPD_PASSWORD", "TAPD_WORKSPACE_ID")
 }
 
 func main() {
 	var (
-		username = os.Getenv("TAPD_USERNAME")
-		password = os.Getenv("TAPD_PASSWORD")
+		username  = os.Getenv("TAPD_USERNAME")
+		password  = os.Getenv("TAPD_PASSWORD")
+		workspace = os.Getenv("TAPD_WORKSPACE_ID")
 	)
 
-	if username == "" || password == "" {
-		log.Fatal("missing TAPD_USERNAME or TAPD_PASSWORD")
+	if username == "" || password == "" || workspace == "" {
+		log.Fatal("missing TAPD_USERNAME, TAPD_PASSWORD or TAPD_WORKSPACE_ID")
+	}
+
+	workspaceID, err := convertToInt(workspace)
+	if err != nil {
+		log.Fatalf("invalid TAPD_WORKSPACE_ID: %s", err)
 	}
 
 	client, err := tapd.NewClient(username, password)
@@ -27,7 +35,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	srv, err := mcp.NewServer(client)
+	srv, err := mcp.NewServer(workspaceID, client)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -47,4 +55,12 @@ func requiredEnvs(keys ...string) {
 	if len(missing) > 0 {
 		log.Fatalf("missing required env vars: %v", missing)
 	}
+}
+
+func convertToInt(s string) (int, error) {
+	i, err := strconv.Atoi(s)
+	if err != nil {
+		return 0, fmt.Errorf("invalid int: %s", s)
+	}
+	return i, nil
 }

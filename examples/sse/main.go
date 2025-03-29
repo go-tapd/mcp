@@ -14,7 +14,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	srv, err := mcp.NewServer(client)
+	workspaceID := 123456 // replace with your workspace ID
+
+	srv, err := mcp.NewServer(workspaceID, client)
 	if err != nil {
 		log.Fatal(err)
 	}
