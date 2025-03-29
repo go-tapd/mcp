@@ -12,21 +12,23 @@ import (
 )
 
 type Server struct {
-	mcpServer  *server.MCPServer
-	tapdClient *tapd.Client
+	workspaceID int
+	mcpServer   *server.MCPServer
+	tapdClient  *tapd.Client
 }
 
 var _ http.Handler = (*Server)(nil)
 
-func NewServer(client *tapd.Client, opts ...Option) (*Server, error) {
+func NewServer(workspaceID int, client *tapd.Client, opts ...Option) (*Server, error) {
 	o, err := newOptions(opts...)
 	if err != nil {
 		return nil, err
 	}
 
 	srv := &Server{
-		tapdClient: client,
-		mcpServer:  server.NewMCPServer(o.name, Version()),
+		workspaceID: workspaceID,
+		tapdClient:  client,
+		mcpServer:   server.NewMCPServer(o.name, Version()),
 	}
 
 	srv.registerTools()
@@ -37,7 +39,7 @@ func NewServer(client *tapd.Client, opts ...Option) (*Server, error) {
 func (s *Server) registerTools() {
 	tools.RegisterTools(s.mcpServer,
 		greetings.NewTool(),
-		roles.NewTool(s.tapdClient),
+		roles.NewTool(s.workspaceID, s.tapdClient),
 	)
 }
 
