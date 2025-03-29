@@ -41,15 +41,15 @@ func (t *Tool) Run(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 		req.WorkitemTypeID = tapd.Ptr(int(typeID))
 	}
 
-	roles, _, err := t.client.StoryService.GetStoryTemplates(ctx, req)
+	templates, _, err := t.client.StoryService.GetStoryTemplates(ctx, req)
 	if err != nil {
 		return nil, err
 	}
 
-	rolesBytes, err := json.Marshal(roles)
+	bytes, err := json.Marshal(templates)
 	if err != nil {
 		return nil, err
 	}
 
-	return mcp.NewToolResultText(string(rolesBytes)), nil
+	return mcp.NewToolResultText(string(bytes)), nil
 }
