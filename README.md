@@ -4,10 +4,14 @@
 
 ### Use STDIO Server
 
-**Install the package**
+**Build the tapd-mcp-server**
 
 ```bash
-go install github.com/go-tapd/mcp/cmd/tapd-mcp-server@latest
+git clone git@github.com:go-tapd/mcp.git
+
+cd mcp && make build/cmd/tapd-mcp-server
+
+./bin/tapd-mcp-server # <--- This is the command to run the STDIO server.
 ```
 
 **Configure the MCP server**
