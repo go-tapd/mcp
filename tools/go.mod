@@ -1,4 +1,4 @@
-module github.com/go-tapd/tapd/tools
+module github.com/go-tapd/mcp/tools
 
 go 1.23.0
 
