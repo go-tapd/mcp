@@ -24,8 +24,8 @@ Below is a configuration example based on Cline, with different configurations f
     "github.com/go-tapd/mcp": {
       "command": "{path}/tapd-mcp-server",
       "env": {
-        "TAPD_USERNAME": "<YOUR_USERNAME>",
-        "TAPD_PASSWORD": "<YOUR_PASSWORD>",
+        "TAPD_CLIENT_ID": "<YOUR_CLIENT_ID>",
+        "TAPD_CLIENT_SECRET": "<YOUR_CLIENT_SECRET>",
         "TAPD_WORKSPACE_ID": "<YOUR_WORKSPACE_ID>"
       }
     }
@@ -55,7 +55,7 @@ import (
 )
 
 func main() {
-	client, err := tapd.NewClient("username", "password")
+	client, err := tapd.NewClient("client_id", "client_secret")
 	if err != nil {
 		log.Fatal(err)
 	}
