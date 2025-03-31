@@ -11,18 +11,18 @@ import (
 )
 
 func init() {
-	requiredEnvs("TAPD_USERNAME", "TAPD_PASSWORD", "TAPD_WORKSPACE_ID")
+	requiredEnvs("TAPD_CLIENT_ID", "TAPD_CLIENT_SECRET", "TAPD_WORKSPACE_ID")
 }
 
 func main() {
 	var (
-		username  = os.Getenv("TAPD_USERNAME")
-		password  = os.Getenv("TAPD_PASSWORD")
-		workspace = os.Getenv("TAPD_WORKSPACE_ID")
+		clientID     = os.Getenv("TAPD_CLIENT_ID")
+		clientSecret = os.Getenv("TAPD_CLIENT_SECRET")
+		workspace    = os.Getenv("TAPD_WORKSPACE_ID")
 	)
 
-	if username == "" || password == "" || workspace == "" {
-		log.Fatal("missing TAPD_USERNAME, TAPD_PASSWORD or TAPD_WORKSPACE_ID")
+	if clientID == "" || clientSecret == "" || workspace == "" {
+		log.Fatal("missing TAPD_CLIENT_ID, TAPD_CLIENT_SECRET or TAPD_WORKSPACE_ID")
 	}
 
 	workspaceID, err := convertToInt(workspace)
@@ -30,7 +30,7 @@ func main() {
 		log.Fatalf("invalid TAPD_WORKSPACE_ID: %s", err)
 	}
 
-	client, err := tapd.NewClient(username, password)
+	client, err := tapd.NewClient(clientID, clientSecret)
 	if err != nil {
 		log.Fatal(err)
 	}
