@@ -1,5 +1,9 @@
 # Tapd MCP Server
 
+> [!WARNING]  
+> For the convenience of unified maintenance, we recently migrated this repository to [go-tapd/tapd](https://github.com/go-tapd/tapd/tree/master/mcp).
+
+
 ## 📥 Usage
 
 ### Use STDIO Server
