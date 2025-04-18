@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/go-tapd/tapd v0.10.0
-	github.com/mark3labs/mcp-go v0.17.0
+	github.com/mark3labs/mcp-go v0.21.1
 	github.com/stretchr/testify v1.10.0
 )
 
