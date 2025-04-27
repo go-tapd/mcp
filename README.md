@@ -1,7 +1,7 @@
 # Tapd MCP Server
 
 > [!WARNING]  
-> For the convenience of unified maintenance, we recently migrated this repository to [go-tapd/tapd](https://github.com/go-tapd/tapd/tree/master/mcp).
+> Since the [official](https://mp.weixin.qq.com/s/mMynWpHrWIWxV-1ng8R_uA) support for MCP is now available, this project will no longer be maintained and has been archived.
 
 
 ## 📥 Usage
